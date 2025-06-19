@@ -32,6 +32,25 @@ const Hero = () => {
                 <img src="/images/falling-boy.png" alt="Falling Boy" />
               </div>
             </div>
+            <div className='card card-3'>
+              <div className='card3-content'>
+                <h3>Everyone's figuring out</h3>
+                <h3>So are YOU.</h3>
+              </div>
+              <div className='girl-reading'>
+                <img src="/images/reading-girl.png" alt="Reading Girl" />
+              </div>
+            </div>
+            <div className='card card-4'>
+              <div className='card4-content'>
+                <h4>FAQ</h4>
+                <h2>See Your Future<br/> Through the <br />Right Lens</h2>
+                <p>Choose the life you want to capture. We <br />help you focus on the right career path.</p>
+                <div className='camera-girl'>
+                  <img src="/images/camera-girl.png" alt="Camera Girl" />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
     </>
