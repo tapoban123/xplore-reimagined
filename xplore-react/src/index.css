@@ -1,1 +1,170 @@
 @import "tailwindcss";
+
+.screen-max-width {
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    position: relative;
+    max-width: 1120px;
+}
+
+.hero-section {
+    background: #000;
+    color: #fff;
+    padding: 2rem;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 1.5rem;
+    height: 400px; 
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 40px;
+    position: relative;
+}
+
+.card-1 {
+    overflow: hidden;
+    grid-column: span 8;
+    position: relative;
+}
+
+.card-2 {
+    grid-column: span 4;
+    position: relative;
+}
+
+.x-bg {
+    position: relative;
+    top: -120px;
+    left: -50px;
+    font-size: 28rem;
+    font-weight: 900;
+    color: rgba(200, 200, 200, 0.562);
+    z-index: 1;
+    pointer-events: none;
+    line-height: 1;
+    display: inline-block;
+}
+
+.p-bg {
+    position: relative;
+    top: -120px;
+    left: -120px; 
+    font-size: 28rem;
+    font-weight: 900;
+    color: rgba(200, 200, 200, 0.562);
+    z-index: 2;
+    pointer-events: none;
+    line-height: 1;
+    display: inline-block;
+}
+
+.card-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10; 
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #333;
+    width: 60%; 
+}
+
+.card-content h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+    line-height: 1.1;
+    color: #000;
+}
+
+.card-content p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+.card-content .cta-link {
+    font-size: 1rem;
+    color: #000;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-decoration: none;
+}
+
+.boy-reading {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    z-index: 15;
+    width: 500px;
+    height: auto;
+}
+
+.boy-reading img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .x-bg {
+        font-size: 20rem;
+        top: -15%;
+        left: -10px;
+    }
+    
+    .p-bg {
+        font-size: 20rem;
+        top: -13%;
+        left: 200px;
+    }
+    
+    .card-content {
+        width: 100%;
+        padding: 1.5rem;
+    }
+    
+    .boy-reading {
+        width: 200px;
+        bottom: -20px;
+        right: -10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .x-bg {
+        font-size: 15rem;
+        top: -10%;
+        left: -5px;
+    }
+    
+    .p-bg {
+        font-size: 15rem;
+        top: -8%;
+        left: 150px;
+    }
+    
+    .card-content {
+        width: 100%;
+        padding: 1rem;
+    }
+    
+    .card-content h2 {
+        font-size: 2rem;
+    }
+    
+    .boy-reading {
+        width: 150px;
+        bottom: -15px;
+        right: -5px;
+    }
+}
