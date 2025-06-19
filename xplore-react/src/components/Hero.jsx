@@ -15,14 +15,23 @@ const Hero = () => {
                 <h2>Future.</h2>
                 <h2>Mapped by</h2>
                 <h2>XPlore</h2>
-                <p>Personalized career guidance, built for the New Gen.</p>
+                <p>Personalized career guidance,<br/> built for the New Gen.</p>
                 <div className='cta-link'>More about Xplore</div>
               </div>
               <div className='boy-reading'>
                 <img src="/images/reading-boy.png" alt="Reading Boy" />
               </div>
             </div>
-            <div className='card card-2'></div>
+            <div className='card card-2'>
+              <div className='card2-content'>
+                <h2 className='heading-1'>THIS ISN'T</h2>
+                <h2 className='heading-2'>YOUR</h2>
+                <h2 className='heading-3'>SCHOOL TEST</h2>
+              </div>
+              <div className='boy-falling'>
+                <img src="/images/falling-boy-removebg-preview.png" alt="Falling Boy" />
+              </div>
+            </div>
           </div>
         </section>
     </>
