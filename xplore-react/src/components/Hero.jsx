@@ -24,12 +24,12 @@ const Hero = () => {
             </div>
             <div className='card card-2'>
               <div className='card2-content'>
-                <h2 className='heading-1'>THIS ISN'T</h2>
-                <h2 className='heading-2'>YOUR</h2>
-                <h2 className='heading-3'>SCHOOL TEST</h2>
+                <h2>THIS ISN'T</h2>
+                <h2>YOUR</h2>
+                <h2>SCHOOL TEST</h2>
               </div>
               <div className='boy-falling'>
-                <img src="/images/falling-boy-removebg-preview.png" alt="Falling Boy" />
+                <img src="/images/falling-boy.png" alt="Falling Boy" />
               </div>
             </div>
           </div>
