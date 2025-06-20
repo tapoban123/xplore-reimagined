@@ -7,8 +7,8 @@ const Hero = () => {
           <div className='hero-grid'>
             <div className='card card-1'>
               <div className='bg-container'>
-                <div className='x-bg'>X</div>
-                <div className='p-bg'>P</div>
+                <div className='x-bg'><img src='/images/X.png'/></div>
+                <div className='p-bg'><img src='/images/P.png'/></div>
               </div>
               <div className='card-content'>
                 <h2>Your</h2>
@@ -32,7 +32,7 @@ const Hero = () => {
                 <img src="/images/falling-boy.png" alt="Falling Boy" />
               </div>
             </div>
-            <div className='card card-3'>
+            <div className='card-changed card-3'>
               <div className='card3-content'>
                 <h3>Everyone's figuring out</h3>
                 <h3>So are YOU.</h3>
@@ -41,7 +41,7 @@ const Hero = () => {
                 <img src="/images/reading-girl.png" alt="Reading Girl" />
               </div>
             </div>
-            <div className='card card-4'>
+            <div className='card-changed card-4'>
               <div className='card4-content'>
                 <h4>FAQ</h4>
                 <h2>See Your Future<br/> Through the <br />Right Lens</h2>
@@ -51,6 +51,8 @@ const Hero = () => {
                 </div>
               </div>
             </div>
+            <div className='card card-5 '></div>
+              
           </div>
         </section>
     </>

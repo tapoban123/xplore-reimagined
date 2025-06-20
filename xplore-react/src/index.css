@@ -50,6 +50,15 @@
   overflow: hidden;
 }
 
+.card-changed {
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 2rem;
+  position: relative;
+  height: 100%;
+  overflow: visible;
+}
+
 .card-1 {
     grid-column: span 8;
     position: relative;
@@ -62,21 +71,18 @@
 
 .x-bg {
     position: relative;
-    top: -120px;
-    left: -50px;
-    font-size: 28rem;
-    font-weight: 900;
-    color: rgba(200, 200, 200, 0.562);
+    top: -80px;
+    left: -70px;
+    
     z-index: 1;
-    pointer-events: none;
-    line-height: 1;
+    
     display: inline-block;
 }
 
 .p-bg {
     position: relative;
-    top: -120px;
-    left: -120px; 
+    top: -80px;
+    left: -60px; 
     font-size: 28rem;
     font-weight: 900;
     color: rgba(200, 200, 200, 0.562);
@@ -89,7 +95,7 @@
 .card-content {
     position: absolute;
     top: 55px;
-    left: 35px;
+    left: 0px;
     z-index: 10; 
     padding: 2rem;
     height: 100%;
@@ -102,7 +108,7 @@
 }
 
 .card-content h2 {
-    font-size: 3.3rem;
+    font-size: 3rem;
     font-weight: 800;
     margin-bottom: 0.2rem;
     line-height: 1.1;
@@ -126,7 +132,7 @@
 
 .boy-reading {
     position: absolute;
-    bottom: -50px;
+    bottom: -65px;
     right: 0;
     z-index: 15;
     width: 500px;
@@ -196,7 +202,7 @@
 .card2-content {
   position: absolute;
   left: 2rem;
-  z-index: 10;
+  
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -232,6 +238,7 @@
 .card-3 {
   position: relative;  
   grid-column: span 4;
+  grid-row: 2/4;
   min-height: 500px;
   padding: 2rem;
   display: flex;
@@ -239,17 +246,23 @@
   font-family: "Poppins", sans-serif;
 }
 
+.card3-content{
+    margin-top: 2rem;
+}
+
 .card3-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  line-height: 1;
+  
   color: #000;
   margin-bottom: 0.5rem;
+  
 }
 
 .girl-reading {
   position: absolute;
-  top: 80px;
+  top: 30%;
+  left: -11px;
   z-index: 15;
   width: 400px;
   height: auto;
@@ -280,11 +293,10 @@
 
 .camera-girl img {
   position: absolute;
-  left: 420px;
-  bottom: 0%;
-  width: 50%;
-  height: auto;
-  display: block;
+  right: -3%; 
+  top: -23%; 
+  width: 60%; 
+  z-index: 1; 
 }
 
 .card4-content h4 {
@@ -296,7 +308,7 @@
 } 
 
 .card4-content h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   line-height: 1;
   color: #000;
@@ -306,6 +318,11 @@
 
 .card4-content p {
   color: #444;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.4;
+}
+
+
+.card-5{
+    grid-column:span 8 ;
 }
