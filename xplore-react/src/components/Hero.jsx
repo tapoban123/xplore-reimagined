@@ -52,7 +52,7 @@ const Hero = () => {
               </div>
             </div>
             <div className='card card-5 '></div>
-              
+               
           </div>
         </section>
     </>
