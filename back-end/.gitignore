@@ -1,0 +1,10 @@
+.venv/
+
+# secrets
+.env
+
+
+# cache
+.idea/
+__pycache__/
+.vscode/

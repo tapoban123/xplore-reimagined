@@ -1,0 +1,7 @@
+fastapi[standard]
+langchain
+langchain-core
+langchain-google-genai
+passlib[bcrypt]
+pyjwt
+python-dotenv
