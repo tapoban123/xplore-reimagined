@@ -231,21 +231,18 @@
     position: relative;
     grid-column: span 4;
     grid-row: 2/4;
-    min-height: 500px;
+    max-height: 475px;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     font-family: "Poppins", sans-serif;
 }
 
-.card3-content {
-    margin-top: 2rem;
-}
 
 .card3-content h3 {
     font-size: 1.6rem;
     font-weight: bold;
-
+    
     color: #000;
     margin-bottom: 0.5rem;
 
@@ -253,7 +250,7 @@
 
 .girl-reading {
     position: absolute;
-    top: 30%;
+    top:18%;
     left: -11px;
     z-index: 15;
     width: 400px;
@@ -268,7 +265,8 @@
 }
 
 .card-4 {
-    grid-column: span 8;
+      grid-column: 5 / 13;
+    grid-row: 2;
     height: 350px;
     padding: 2rem;
     position: relative;
@@ -316,6 +314,15 @@
 
 
 .card-5 {
-    grid-column: span 8;
-    
+    grid-column: 5 / 13;
+    max-height: 100px;
+}
+
+
+
+.journey-text{
+    color: rgb(133, 74, 84);
+    font-weight: 400;
+    font-size: 105px;
+    font-family: 'Heathergreen', sans-serif;
 }

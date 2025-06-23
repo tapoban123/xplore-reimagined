@@ -1,4 +1,5 @@
 import React from 'react'
+import StartBtn from './StartBtn'
 
 const Hero = () => {
   return (
@@ -51,7 +52,9 @@ const Hero = () => {
                 </div>
               </div>
             </div>
-            <div className='card card-5 '></div>
+            <div className='card card-5 flex items-center'>
+              <StartBtn />
+            </div>
                
           </div>
         </section>
