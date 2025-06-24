@@ -1,328 +1,475 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Poppins';
-    src: url('/fonts/Poppins/Poppins-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+  font-family: "Poppins";
+  src: url("/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'Heathergreen';
-    src: url('/fonts/heathergreen.regular.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Heathergreen";
+  src: url("/fonts/heathergreen.regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 .screen-max-width {
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-    position: relative;
-    max-width: 1120px;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  position: relative;
+  max-width: 1120px;
 }
 
 .hero-section {
-    background: #000;
-    color: #fff;
-    padding: 2rem;
+  background: #000;
+  color: #fff;
+  padding: 2rem;
 }
 
 .hero-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: minmax(200px, auto);
-    gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(200px, auto);
+  gap: 1.5rem;
 }
 
 .card {
-    background-color: #ffffff;
-    border-radius: 40px;
-    padding: 2rem;
-    position: relative;
-    height: 100%;
-    overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 2rem;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
 }
 
 .card-changed {
-    background-color: #ffffff;
-    border-radius: 40px;
-    padding: 2rem;
-    position: relative;
-    height: 100%;
-    overflow: visible;
+  background-color: #ffffff;
+  border-radius: 40px;
+  padding: 2rem;
+  position: relative;
+  height: 100%;
+  overflow: visible;
 }
 
 .card-1 {
-    grid-column: span 8;
-    position: relative;
+  grid-column: span 8;
+  position: relative;
 }
 
 .card-2 {
-    grid-column: span 4;
-    position: relative;
+  grid-column: span 4;
+  position: relative;
 }
 
 .x-bg {
-    position: relative;
-    top: -80px;
-    left: -70px;
-    display: inline-block;
+  position: relative;
+  top: -80px;
+  left: -70px;
+  display: inline-block;
 }
 
 .p-bg {
-    position: relative;
-    top: -80px;
-    left: -60px;
+  position: relative;
+  top: -80px;
+  left: -60px;
 
-    display: inline-block;
+  display: inline-block;
 }
 
 .card-content {
-    position: absolute;
-    top: 55px;
-    left: 0px;
-    z-index: 10;
-    padding: 2rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    color: #333;
-    width: 60%;
-    font-family: "Poppins", sans-serif;
+  position: absolute;
+  top: 55px;
+  left: 0px;
+  z-index: 10;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #333;
+  width: 60%;
+  font-family: "Poppins", sans-serif;
 }
 
 .card-content h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    margin-bottom: 0.2rem;
-    line-height: 1.1;
-    color: #000;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+  color: #000;
 }
 
 .card-content p {
-    font-size: 1.5rem;
-    color: #666;
-    margin-top: 0.5rem;
-    font-weight: 500;
+  font-size: 1.5rem;
+  color: #666;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 .card-content .cta-link {
-    font-size: 1.3rem;
-    color: #000;
-    font-weight: 800;
-    margin-top: 1rem;
-    text-decoration: none;
+  font-size: 1.3rem;
+  color: #000;
+  font-weight: 800;
+  margin-top: 1rem;
+  text-decoration: none;
 }
 
 .boy-reading {
-    position: absolute;
-    bottom: -65px;
-    right: 0;
-    z-index: 15;
-    width: 500px;
-    height: auto;
+  position: absolute;
+  bottom: -65px;
+  right: 0;
+  z-index: 15;
+  width: 500px;
+  height: auto;
 }
 
 .boy-reading img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @media (max-width: 768px) {
-    .x-bg {
-        font-size: 20rem;
-        top: -15%;
-        left: -10px;
-    }
+  .x-bg {
+    font-size: 20rem;
+    top: -15%;
+    left: -10px;
+  }
 
-    .p-bg {
-        font-size: 20rem;
-        top: -13%;
-        left: 200px;
-    }
+  .p-bg {
+    font-size: 20rem;
+    top: -13%;
+    left: 200px;
+  }
 
-    .card-content {
-        width: 100%;
-        padding: 1.5rem;
-    }
+  .card-content {
+    width: 100%;
+    padding: 1.5rem;
+  }
 
-    .boy-reading {
-        width: 200px;
-        bottom: -20px;
-        right: -10px;
-    }
+  .boy-reading {
+    width: 200px;
+    bottom: -20px;
+    right: -10px;
+  }
 }
 
 @media (max-width: 640px) {
-    .x-bg {
-        font-size: 15rem;
-        top: -10%;
-        left: -5px;
-    }
+  .x-bg {
+    font-size: 15rem;
+    top: -10%;
+    left: -5px;
+  }
 
-    .p-bg {
-        font-size: 15rem;
-        top: -8%;
-        left: 150px;
-    }
+  .p-bg {
+    font-size: 15rem;
+    top: -8%;
+    left: 150px;
+  }
 
-    .card-content {
-        width: 100%;
-        padding: 1rem;
-    }
+  .card-content {
+    width: 100%;
+    padding: 1rem;
+  }
 
-    .card-content h2 {
-        font-size: 2rem;
-    }
+  .card-content h2 {
+    font-size: 2rem;
+  }
 
-    .boy-reading {
-        width: 150px;
-        bottom: -15px;
-        right: -5px;
-    }
+  .boy-reading {
+    width: 150px;
+    bottom: -15px;
+    right: -5px;
+  }
 }
 
 .card2-content {
-    position: absolute;
-    left: 2rem;
+  position: absolute;
+  left: 2rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    font-family: 'Heathergreen', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  font-family: "Heathergreen", sans-serif;
 }
 
 .card2-content h2 {
-    font-size: 8.8rem;
-    font-weight: 400;
-    line-height: 0.9;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #000;
-    margin: 0;
+  font-size: 8.8rem;
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000;
+  margin: 0;
 }
 
 .boy-falling {
-    position: absolute;
-    top: 150px;
-    left: 150px;
-    z-index: 15;
-    width: 280px;
-    height: auto;
+  position: absolute;
+  top: 150px;
+  left: 150px;
+  z-index: 15;
+  width: 280px;
+  height: auto;
 }
 
 .boy-falling img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .card-3 {
-    position: relative;
-    grid-column: span 4;
-    grid-row: 2/4;
-    max-height: 475px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    font-family: "Poppins", sans-serif;
+  position: relative;
+  grid-column: span 4;
+  grid-row: 2/4;
+  max-height: 475px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
 }
 
-
 .card3-content h3 {
-    font-size: 1.6rem;
-    font-weight: bold;
-    
-    color: #000;
-    margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
 
+  color: #000;
+  margin-bottom: 0.5rem;
 }
 
 .girl-reading {
-    position: absolute;
-    top:18%;
-    left: -11px;
-    z-index: 15;
-    width: 400px;
-    height: auto;
-    object-fit: contain;
+  position: absolute;
+  top: 18%;
+  left: -11px;
+  z-index: 15;
+  width: 400px;
+  height: auto;
+  object-fit: contain;
 }
 
 .girl-reading img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .card-4 {
-      grid-column: 5 / 13;
-    grid-row: 2;
-    height: 350px;
-    padding: 2rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    font-family: "Poppins", sans-serif;
+  grid-column: 5 / 13;
+  grid-row: 2;
+  height: 350px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
 }
 
 .camera-girl {
-    z-index: 15;
-    height: auto;
-    object-fit: contain;
+  z-index: 15;
+  height: auto;
+  object-fit: contain;
 }
 
 .camera-girl img {
-    position: absolute;
-    right: -3%;
-    top: -23%;
-    width: 60%;
-    z-index: 1;
+  position: absolute;
+  right: -3%;
+  top: -23%;
+  width: 60%;
+  z-index: 1;
 }
 
 .card4-content h4 {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 0.3rem;
-    font-weight: bold;
-    padding-bottom: 30px;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  padding-bottom: 30px;
 }
 
 .card4-content h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    line-height: 1;
-    color: #000;
-    margin-bottom: 0.5rem;
-    padding-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  margin-bottom: 0.5rem;
+  padding-bottom: 20px;
 }
 
 .card4-content p {
-    color: #444;
-    font-size: 1.2rem;
-    line-height: 1.4;
+  color: #444;
+  font-size: 1.2rem;
+  line-height: 1.4;
 }
-
 
 .card-5 {
-    grid-column: 5 / 13;
-    max-height: 100px;
+  grid-column: 5 / 13;
+  max-height: 100px;
+  font-family: "Heathergreen", sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
 }
 
-
-
-.journey-text{
+/* .journey-text{
     color: rgb(133, 74, 84);
-    font-weight: 400;
-    font-size: 105px;
-    font-family: 'Heathergreen', sans-serif;
+    font-size: 3rem;
+} */
+
+.card-6 {
+  grid-column: span 8;
+  max-height: 470px;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 2rem;
+  font-family: "Poppins", sans-serif;
+  color: #000;
 }
+
+.card6-content h4 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  padding-bottom: 120px;
+}
+
+.card6-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 1;
+  color: #000;
+  margin-bottom: 0.5rem;
+  padding-bottom: 20px;
+}
+
+.card6-content p {
+  color: #444;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.chatbot-img {
+  z-index: 15;
+  height: auto;
+  object-fit: contain;
+}
+
+.chatbot-img img {
+  position: absolute;
+  right: -6%;
+  top: 9%;
+  width: 60%;
+  z-index: 1;
+}
+
+.card-7 {
+  grid-column: span 4;
+  max-height: 470px;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 2rem;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.card7-content h4 {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.qr-scanner {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-case {
+  width: 90%;
+  height: auto;
+  display: block;
+  z-index: 1;
+}
+
+.qr-overlay {
+  position: absolute;
+  top: 20%;
+  width: 80%;
+  text-align: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-overlay h3 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  color: #000;
+}
+
+.qr-img {
+  width: 180px;
+  height: 180px;
+  z-index: 3;
+}
+
+.border-img {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 66%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.card-8 {
+  grid-column: 1 / 13;
+  max-height: 440px;
+  background-color: #fff;
+  border-radius: 40px;
+  font-family: 'Heathergreen', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.tribe-heading {
+  font-size: 22rem;
+  font-weight: 550;
+  line-height: 0.8;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: -12.5rem;
+  text-transform: uppercase;
+}
+
+.tribe-img img {
+  width: 100%;
+  max-width: 1180px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
