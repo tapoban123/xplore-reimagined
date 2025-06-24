@@ -121,6 +121,56 @@ const Hero = () => {
               <img src="/images/tribe-image.png" alt="Tribe Illustration" />
             </div>
           </div>
+          <div className="card card-9">
+            <div className="card9-content">
+              <h4>Psychologist Support</h4>
+              <h1>Browse certified therapists</h1>
+              <p>
+                Talk to licensed <br /> psychologists <br /> who get it — from{" "}
+                <br /> burnout to <br />
+                anxiety
+              </p>
+            </div>
+            <div className="therapist-img">
+              <img src="/images/psychologist.png" alt="Therapist" />
+            </div>
+          </div>
+          {/* card-10 */}
+          <div className="card card-10">
+            <h4>Mentorship</h4>
+            <h1>Explore Careers with a Mentor</h1>
+            <div className="mentors-list">
+              {[
+                {
+                  name: "Tung Tung Sahur",
+                  rating: "★ 4.5",
+                  field: "Brainrot",
+                  image: "/images/mentor-1.png",
+                },
+                {
+                  name: "Brr Brr Patapin",
+                  rating: "★ 4.7",
+                  field: "Videography",
+                  image: "/images/mentor-2.jpg",
+                },
+                {
+                  name: "Schimpanzini Bananini",
+                  rating: "★ 4.5",
+                  field: "Animation",
+                  image: "/images/mentor-3.png",
+                },
+              ].map((mentor, idx) => (
+                <div className="mentor-card" key={idx}>
+                  <img src={mentor.image} alt={mentor.name} />
+                  <p className="mentor-name">{mentor.name}</p>
+                  <p className="mentor-field">
+                    {mentor.rating} | {mentor.field}
+                  </p>
+                  <button className="mentor-btn">Contact</button>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </>
