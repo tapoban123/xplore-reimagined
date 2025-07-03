@@ -20,7 +20,7 @@ def get_questions():
     llm = get_llm()
     pydantic_parser = PydanticOutputParser(pydantic_object=AllQuestionsModel)
     prompt = PromptTemplate(
-        template="""Generate me 2 psychometric questions with 4 choices for each. The user will answer those psychometric questions and 
+        template="""Generate me 20 psychometric questions with 4 choices for each. The user will answer those psychometric questions and 
         you will have to analyse the best 3 career choices for the user from the answers to those questions.
         \n\n{format_instructions}  
         """,
@@ -38,7 +38,7 @@ def get_careers(questions: list):
 
     prompt = PromptTemplate(
         template="""You are a professional Career Counselor cum Psychiatrist. 
-        Provided below is are 2 questions and their answers as answered by the user. 
+        Provided below is are 20 questions and their answers as answered by the user. 
         I want you to,
         1. Analyse the answers well
         2. Understand the intellect and other psychometrics' level of the student.
