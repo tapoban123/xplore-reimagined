@@ -33,6 +33,7 @@ def get_questions():
 
 
 def get_careers(questions: list):
+    """Generates 3 most suitable careers for the student as per their psychometrics."""
     llm = get_llm()
     careers_parser = PydanticOutputParser(pydantic_object=CareersOutputModel)
 

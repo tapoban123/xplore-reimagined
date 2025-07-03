@@ -15,4 +15,4 @@ def get_psychometric_questionnaire():
 
 @ai_router.post("/careers")
 def get_careers_for_user(qna: QuestionsWithAnswersRequestModel):
-    return get_careers(qna)
+    return get_careers(qna.questions_with_answers)
