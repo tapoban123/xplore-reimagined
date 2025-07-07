@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Routes, Route } from 'react-router-dom'
 import Hero from './components/Hero'
+import SignUp from './components/SignUp';
+import Login from './components/Login'
 
 
 function App() {
@@ -10,7 +10,11 @@ function App() {
   return (
     <>
       <main className='bg-black min-h-screen'>
-        <Hero />
+        <Routes>
+          <Route path='/' element={<Hero />} />
+          <Route path='/signup'  element={<SignUp />}/>
+          <Route path='/login' element={<Login />} />
+        </Routes>
       </main>
     </>
   )

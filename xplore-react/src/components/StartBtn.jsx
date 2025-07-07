@@ -1,11 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
 
+import { useNavigate } from 'react-router-dom';
+
 const StartBtn = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragProgress, setDragProgress] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
+
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(isCompleted){
+      setTimeout(() => {
+        navigate('/signup')
+      }, 500);
+    }
+
+  },[isCompleted,navigate])
 
   const handleMouseDown = (e) => {
     if (isCompleted) return;
@@ -152,6 +165,7 @@ const StartBtn = () => {
         <div className="text-white">
           {isCompleted ? <Check /> : <ArrowRight />}
         </div>
+        
       </div>
     </div>
   );
