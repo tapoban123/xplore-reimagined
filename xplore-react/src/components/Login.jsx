@@ -1,17 +1,40 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
 
-  const handleLogin = (e) => {
-    e.preventDefault()
-    navigate('/dashboard')
-  }
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth/login', {
+        email: formData.email,
+        password: formData.password
+      });
+
+      // Save JWT token
+      localStorage.setItem('token', res.data.token);
+      navigate('/dashboard');
+    } catch (err) {
+      alert(err.response?.data?.message || 'Login failed');
+    }
+  };
 
   const goToSignUp = () => {
-    navigate('/signup')
-  }
+    navigate('/signup');
+  };
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -28,6 +51,8 @@ const Login = () => {
               id="email"
               name="email"
               type="email"
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -38,6 +63,8 @@ const Login = () => {
               id="password"
               name="password"
               type="password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
@@ -62,7 +89,7 @@ const Login = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
