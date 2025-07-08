@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import { useNavigate } from 'react-router-dom';
+
 
 const StartBtn = () => {
   const [isDragging, setIsDragging] = useState(false);
@@ -9,16 +9,9 @@ const StartBtn = () => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
 
-  const navigate = useNavigate();
+  
 
-  useEffect(()=>{
-    if(isCompleted){
-      setTimeout(() => {
-        navigate('/signup')
-      }, 500);
-    }
 
-  },[isCompleted,navigate])
 
   const handleMouseDown = (e) => {
     if (isCompleted) return;
