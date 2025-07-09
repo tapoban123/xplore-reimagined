@@ -11,5 +11,16 @@ class AllQuestionsModel(BaseModel):
         description="List containing all the psychometric questions for the user.")
 
 
+class CareerModel(BaseModel):
+    career: str = Field(description="Name of the career")
+    explanation: str = Field(description="Explanation of why the career is suitable for the student.")
+
+
+class PsychometricsModel(BaseModel):
+    parameter: str = Field(description="Name of the parameter")
+    score: float = Field(description="Score of the parameter from 0 to 10 based on the user's answers")
+
+
 class CareersOutputModel(BaseModel):
-    careers: list[str] = Field(description="Three most suitable career titles for the user.")
+    careers: list[CareerModel] = Field(description="Careers for the user.", max_length=3, min_length=3)
+    psychometrics: list[PsychometricsModel] = Field(description="Psychometric parameters with a score from 0 to 10.")
