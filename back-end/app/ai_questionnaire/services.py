@@ -2,7 +2,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.prompts import PromptTemplate
 
-from ..utils.env_secrets import API_KEYS, LLM_MODELS
+from ..utils.constants import API_KEYS, LLM_MODELS
 from .output_parser_models import AllQuestionsModel, CareersOutputModel
 from .prompts import GENERATE_PSYCHOMETRIC_QUESTIONS_PROMPT, GENERATE_CAREERS_PROMPT
 
@@ -10,7 +10,7 @@ from .prompts import GENERATE_PSYCHOMETRIC_QUESTIONS_PROMPT, GENERATE_CAREERS_PR
 def get_llm() -> ChatGoogleGenerativeAI:
     """Returns the Google Gemini LLM instance."""
     llm = ChatGoogleGenerativeAI(
-        google_api_key=API_KEYS.GOOGLE_GEMINI_API_KEY.value,
+        google_api_key=API_KEYS.GOOGLE_GEMINI_API_KEY,
         model=LLM_MODELS.GOOGLE_GEMINI_MODEL,
     )
     return llm
