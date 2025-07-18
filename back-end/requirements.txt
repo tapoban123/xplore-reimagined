@@ -5,3 +5,4 @@ langchain-google-genai
 passlib[bcrypt]
 pyjwt
 python-dotenv
+sqlmodel
