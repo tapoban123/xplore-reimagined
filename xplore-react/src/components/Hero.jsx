@@ -4,7 +4,7 @@ import StartBtn from "./StartBtn";
 const Hero = () => {
   return (
     <>
-      <section className="hero-section w-full">
+      <section className="hero-section w-full bg-black min-h-screen">
         <div className="hero-grid">
           <div className="card card-1">
             <div className="bg-container">

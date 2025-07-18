@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <main className='bg-black min-h-screen'>
+      <main>
       
         <Routes>
           <Route path='/' element={<Hero />} />
