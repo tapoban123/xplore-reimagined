@@ -1,13 +1,11 @@
 import uuid
 import random
-
 from passlib.context import CryptContext
 import jwt
 from jwt.exceptions import InvalidTokenError
 from datetime import datetime, timedelta, timezone
 from sqlmodel import select
 from pydantic import BaseModel
-
 from app.utils.constants import JWT_SECRETS, OTP_TYPE, REDIS_SECRETS
 from app.database.core import db_dependency
 from app.entities.students import Student
@@ -16,7 +14,7 @@ from app.exceptions import (
     UserNotFoundException,
     InvalidUserCredentialsException,
     InvalidOTPReceivedException,
-    OTPAlreadyExpiredException
+    OTPAlreadyExpiredException,
 )
 from app.utils.send_email import send_mail
 import redis
