@@ -5,6 +5,12 @@ from enum import Enum
 load_dotenv()
 
 
+class REDIS_SECRETS(str, Enum):
+    REDIS_HOST = os.environ.get("REDIS_HOST")
+    REDIS_PASSWORD = os.environ.get("REDIS_PASSWORD")
+    REDIS_USERNAME = os.environ.get("REDIS_USERNAME")
+
+
 class JWT_SECRETS:
     JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY")
 

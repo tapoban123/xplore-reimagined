@@ -2,8 +2,8 @@ from fastapi import APIRouter
 from pydantic import EmailStr
 
 from app.database.core import db_dependency
-from .services import create_new_student, login_existing_student, send_otp
-from .models import SignUpUserModel, LoginInUserModel
+from .services import create_new_student, login_existing_student, send_otp, validate_otp
+from .models import SignUpUserModel, LoginInUserModel, VerifyOtpModel
 from app.utils.constants import OTP_TYPE
 
 student_auth_router = APIRouter(
@@ -25,9 +25,7 @@ def sign_up_student(user_details: SignUpUserModel, db: db_dependency):
 @student_auth_router.post("/log-in")
 def login_in_student(user_details: LoginInUserModel, db: db_dependency):
     return login_existing_student(
-        email=user_details.email,
-        password=user_details.password,
-        db=db
+        email=user_details.email, password=user_details.password, db=db
     )
 
 
@@ -43,4 +41,11 @@ def send_sign_up_otp(receiver_email: EmailStr):
 
 @student_auth_router.post("/send-reset-password-otp")
 def send_reset_password_otp(receiver_email: EmailStr):
-    return send_otp(otp_type=OTP_TYPE.RESET_PASSWORD, receiver_email=str(receiver_email))
+    return send_otp(
+        otp_type=OTP_TYPE.RESET_PASSWORD, receiver_email=str(receiver_email)
+    )
+
+
+@student_auth_router.post("/verify-otp")
+def verify_otp(otp: VerifyOtpModel):
+    return validate_otp(otp_key=otp.otp_key, otp=otp.otp)

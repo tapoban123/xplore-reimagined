@@ -22,7 +22,9 @@ def get_questions():
     pydantic_parser = PydanticOutputParser(pydantic_object=AllQuestionsModel)
     prompt = PromptTemplate(
         template=f"""{GENERATE_PSYCHOMETRIC_QUESTIONS_PROMPT}\n\n{{format_instructions}}""",
-        partial_variables={"format_instructions": pydantic_parser.get_format_instructions()},
+        partial_variables={
+            "format_instructions": pydantic_parser.get_format_instructions()
+        },
     )
 
     chain = prompt | llm | pydantic_parser
@@ -39,7 +41,9 @@ def get_careers(questions: list):
     prompt = PromptTemplate(
         template=f"""{GENERATE_CAREERS_PROMPT}\n\n{{qna}}\n\n\n{{format_instructions}}""",
         input_variables=["qna"],
-        partial_variables={"format_instructions": careers_parser.get_format_instructions()},
+        partial_variables={
+            "format_instructions": careers_parser.get_format_instructions()
+        },
     )
 
     chain = prompt | llm | careers_parser

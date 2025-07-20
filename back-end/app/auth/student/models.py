@@ -12,3 +12,8 @@ class SignUpUserModel(AuthBaseModel):
 
 class LoginInUserModel(AuthBaseModel):
     pass
+
+
+class VerifyOtpModel(BaseModel):
+    otp: int
+    otp_key: str

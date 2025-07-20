@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from .ai_questionnaire.controller import ai_router
 from contextlib import asynccontextmanager
-from .database.core import create_all_tables, db_dependency
+from .database.core import create_all_tables
 from .auth.student.controller import student_auth_router
 
 

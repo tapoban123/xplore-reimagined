@@ -1,12 +1,17 @@
 from app.utils.constants import GMAIL_CREDS, OTP_TYPE
-import smtplib, ssl
+import smtplib
+import ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-from .otp_templates import LOG_IN_OTP_TEMPLATE, SIGN_UP_OTP_TEMPLATE, RESET_PASSWORD_OTP_TEMPLATE
+from .otp_templates import (
+    LOG_IN_OTP_TEMPLATE,
+    SIGN_UP_OTP_TEMPLATE,
+    RESET_PASSWORD_OTP_TEMPLATE,
+)
 
 
-def send_mail(otp: str, otp_type: OTP_TYPE, receiver_email: str) -> None:
+def send_mail(otp: int, otp_type: OTP_TYPE, receiver_email: str) -> None:
     """Function that creates an email message and sends to the provided gmail inbox."""
     SENDER_EMAIL = "xplore541@gmail.com"
     RECEIVER_EMAIL = receiver_email

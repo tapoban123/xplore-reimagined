@@ -3,6 +3,7 @@ from fastapi import HTTPException, status
 
 class BaseAuthException(HTTPException):
     """Base exception for Authentication."""
+
     pass
 
 
@@ -22,3 +23,15 @@ class InvalidUserCredentialsException(BaseAuthException):
     def __init__(self):
         message = "Invalid user credentials."
         super().__init__(status_code=status.HTTP_401_UNAUTHORIZED, detail=message)
+
+
+class InvalidOTPReceivedException(BaseAuthException):
+    def __init__(self):
+        message = "Invalid OTP received."
+        super().__init__(status_code=status.HTTP_401_UNAUTHORIZED, detail=message)
+
+
+class OTPAlreadyExpiredException(BaseAuthException):
+    def __init__(self):
+        message = "OTP has already expired."
+        super().__init__(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail=message)

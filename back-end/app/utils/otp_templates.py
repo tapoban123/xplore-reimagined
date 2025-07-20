@@ -1,4 +1,4 @@
-def LOG_IN_OTP_TEMPLATE(otp: str) -> str:
+def LOG_IN_OTP_TEMPLATE(otp: int) -> str:
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,7 +136,7 @@ def LOG_IN_OTP_TEMPLATE(otp: str) -> str:
 </html>"""
 
 
-def SIGN_UP_OTP_TEMPLATE(otp: str) -> str:
+def SIGN_UP_OTP_TEMPLATE(otp: int) -> str:
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -277,7 +277,7 @@ def SIGN_UP_OTP_TEMPLATE(otp: str) -> str:
 </html>"""
 
 
-def RESET_PASSWORD_OTP_TEMPLATE(otp: str) -> str:
+def RESET_PASSWORD_OTP_TEMPLATE(otp: int) -> str:
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>

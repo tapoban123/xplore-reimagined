@@ -6,12 +6,20 @@ import jwt
 from jwt.exceptions import InvalidTokenError
 from datetime import datetime, timedelta, timezone
 from sqlmodel import select
+from pydantic import BaseModel
 
-from app.utils.constants import JWT_SECRETS, OTP_TYPE
+from app.utils.constants import JWT_SECRETS, OTP_TYPE, REDIS_SECRETS
 from app.database.core import db_dependency
 from app.entities.students import Student
-from app.exceptions import UserAlreadyExistsException, UserNotFoundException, InvalidUserCredentialsException
+from app.exceptions import (
+    UserAlreadyExistsException,
+    UserNotFoundException,
+    InvalidUserCredentialsException,
+    InvalidOTPReceivedException,
+    OTPAlreadyExpiredException
+)
 from app.utils.send_email import send_mail
+import redis
 
 JWT_SECRET_KEY = JWT_SECRETS.JWT_SECRET_KEY
 JWT_ALGORITHM = "HS256"
@@ -19,25 +27,36 @@ ACCESS_TOKEN_EXPIRE_DAYS = 30
 
 bcrypt_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+redis_config = redis.Redis(
+    host=REDIS_SECRETS.REDIS_HOST,
+    port=12123,
+    decode_responses=True,
+    username=REDIS_SECRETS.REDIS_USERNAME,
+    password=REDIS_SECRETS.REDIS_PASSWORD,
+)
+
+
+class OTP_MODEL(BaseModel):
+    otp: int
+    otp_key: str
+
 
 def user_exists(email: str, db: db_dependency) -> Student | None:
+    """Check if user exists in database or not."""
     query = select(Student).where(Student.email == email)
     user = db.exec(query)
     return user.first()
 
 
 def create_new_student(name: str, email: str, password: str, db: db_dependency):
-    """Function to sign up new students to our platform."""
+    """Sign up new student to our platform."""
     if user_exists(email, db):
         raise UserAlreadyExistsException()
 
     uid = uuid.uuid4().hex
 
     new_user = Student(
-        id=uid,
-        name=name,
-        email=email,
-        password=bcrypt_context.hash(password)
+        id=uid, name=name, email=email, password=bcrypt_context.hash(password)
     )
     db.add(new_user)
     db.commit()
@@ -48,7 +67,7 @@ def create_new_student(name: str, email: str, password: str, db: db_dependency):
 
 
 def login_existing_student(email: str, password: str, db: db_dependency):
-    """Function that logs in existing student."""
+    """Log in existing student."""
     user = user_exists(email, db)
 
     if not user:
@@ -58,31 +77,40 @@ def login_existing_student(email: str, password: str, db: db_dependency):
         raise InvalidUserCredentialsException()
 
     token = create_access_token(user.id)
-
     return {"access_token": token}
 
 
-def generate_otp() -> str:
-    """Function that generates a 6-digit One-Time-Password."""
+def generate_otp() -> OTP_MODEL:
+    """Generates a 6-digit One-Time-Password and save it in Redis database."""
     otp = random.randint(100000, 999999)
-    otp_formatted = " ".join(str(otp).split())
-    return otp_formatted
+    otp_key = f"otp-key_{uuid.uuid4().hex}"
+    redis_config.setex(name=otp_key, value=otp, time=timedelta(minutes=1))
+    # otp_formatted = " ".join(str(otp).split())
+    return OTP_MODEL(otp=otp, otp_key=otp_key)
 
 
 def send_otp(otp_type: OTP_TYPE, receiver_email: str):
-    """Function that generates an OTP and sends that to the user."""
-    otp: str = generate_otp()
-    send_mail(otp_type=otp_type, otp=otp, receiver_email=receiver_email)
+    """Generate an OTP and send that to the user."""
+    otp: OTP_MODEL = generate_otp()
+    send_mail(otp_type=otp_type, otp=otp.otp, receiver_email=receiver_email)
+    return {"otp_key": otp.otp_key}
+
+
+def validate_otp(otp: int, otp_key: str):
+    """Validates the OTP provided by the user with OTP present in Redis database."""
+    otp_verify: str = redis_config.get(otp_key)
+
+    if not otp_verify:
+        raise OTPAlreadyExpiredException()
+
+    if str(otp).strip() != otp_verify.strip():
+        raise InvalidOTPReceivedException()
+
     return {"details": "success"}
 
 
-def validate_otp(otp: str, otp_key: str):
-    """Function that validates the provided OTP."""
-    pass
-
-
 def create_access_token(uid: str) -> str:
-    """Function that generates a new access token from the user id. Token expires after 30 days."""
+    """Generate a new access token from the user id. Token expires after 30 days."""
     payload: dict[str, datetime | str] = {"uid": uid}
     exp_claim = {"exp": datetime.now(tz=timezone.utc) + timedelta(days=30)}
     payload.update(exp_claim)
@@ -91,9 +119,11 @@ def create_access_token(uid: str) -> str:
 
 
 def validate_access_token(token: str, db: db_dependency) -> bool | Student:
-    """Function that validates the provided access token."""
+    """Validate the access token provided by the user."""
     try:
-        payload: dict = jwt.decode(jwt=token, key=JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        payload: dict = jwt.decode(
+            jwt=token, key=JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM]
+        )
         user_id = payload.get("uid")
 
         if not user_id:
