@@ -13,7 +13,7 @@ const StartBtn = () => {
   const navigate = useNavigate();
 
   if(isCompleted){
-    setTimeout(()=>navigate('/test'),[500])
+    setTimeout(()=>navigate('/log-in'),[500])
 
   }
 
