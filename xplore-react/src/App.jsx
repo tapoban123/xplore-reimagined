@@ -22,9 +22,17 @@ function App() {
         <Route path="/" element={<Hero />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/log-in" element={<Login />} />
-        <Route path="/test" element={<Test />} /> 
+        {/* <Route path="/test" element={<Test />} /> */}
 
         {/* Protected Route */}
+        <Route
+          path="/test"
+          element={
+            <ProtectedRoute>
+              <Test />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={
