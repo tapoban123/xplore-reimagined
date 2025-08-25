@@ -35,3 +35,9 @@ class OTPAlreadyExpiredException(BaseAuthException):
     def __init__(self):
         message = "OTP has already expired."
         super().__init__(status_code=status.HTTP_408_REQUEST_TIMEOUT, detail=message)
+
+
+class InvalidAccessTokenException(BaseAuthException):
+    def __init__(self):
+        message = "Invalid access token."
+        super().__init__(status_code=status.HTTP_401_UNAUTHORIZED, detail=message)

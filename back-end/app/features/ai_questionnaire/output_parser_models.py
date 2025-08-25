@@ -17,7 +17,7 @@ class AllQuestionsModel(BaseModel):
 class CareerModel(BaseModel):
     career: str = Field(description="Name of the career")
     explanation: str = Field(
-        description="Explanation of why the career is suitable for the student."
+        description="Explanation of why the career is suitable for the student within 15-20 words.",
     )
 
 

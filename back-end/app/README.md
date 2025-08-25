@@ -14,6 +14,18 @@ The career choices to be returned must be appropriate and practical for an India
 #### Example Input:
 
 {
+  "details": "success",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlMmZlMmY4ODAzYjA0NmM5YjMwMjFkMjBiNGQ5YmUxZSIsImV4cCI6MTc1ODcyNTIzMH0.0E75EIwfemhdsFYyXpX7G2LJ29iavnSRUaIFW5YjisA"
+}
+
+
+{
+  "details": "success",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxMTNlOWJhNmJkZDY0YjdhYjNhM2MyMzUwZmQ1NDQ4MiIsImV4cCI6MTc1ODczNTA1NH0.8LmQTfwG7pxbJtqTEgdEDpsYxTzcnA1fr0avhoDxjsc"
+}
+
+
+{
 "questions_with_answers": [
 {
 "question": "When working on a group project, what role do you naturally take?",
@@ -96,4 +108,92 @@ The career choices to be returned must be appropriate and practical for an India
 "answer": "One that allows me to help others and make a real difference."
 }
 ]
+}
+
+{
+  "careers": [
+    {
+      "career": "Clinical Psychologist / Counselor",
+      "explanation": "Your exceptionally high emotional intelligence, empathy, and strong interest in human behavior and mental health align perfectly with this field. You also possess strong analytical and communication skills essential for understanding and helping clients."
+    },
+    {
+      "career": "UX/UI Designer",
+      "explanation": "Your high creativity, design interest, and keen attention to detail are well-suited for creating intuitive and aesthetically pleasing user experiences. Your empathy and problem-solving skills will help you understand user needs and design effective solutions."
+    },
+    {
+      "career": "Human Resources (HR) Specialist / Organizational Development Consultant",
+      "explanation": "This role leverages your strong emotional intelligence, empathy, and communication skills to support and develop people within an organization. Your ability to mediate conflicts, understand diverse perspectives, and organize tasks would be highly valuable."
+    }
+  ],
+  "psychometrics": [
+    {
+      "parameter": "Analytical Thinking",
+      "score": 8.5
+    },
+    {
+      "parameter": "Creativity",
+      "score": 9
+    },
+    {
+      "parameter": "Emotional Intelligence",
+      "score": 9.5
+    },
+    {
+      "parameter": "Leadership",
+      "score": 7.5
+    },
+    {
+      "parameter": "Communication Skills",
+      "score": 8.5
+    },
+    {
+      "parameter": "Risk-taking",
+      "score": 3
+    },
+    {
+      "parameter": "Attention to Detail",
+      "score": 8.5
+    },
+    {
+      "parameter": "Problem-solving",
+      "score": 8.5
+    },
+    {
+      "parameter": "Empathy",
+      "score": 9.5
+    },
+    {
+      "parameter": "Teamwork",
+      "score": 8
+    },
+    {
+      "parameter": "Independence",
+      "score": 8
+    },
+    {
+      "parameter": "Decision-making",
+      "score": 7
+    },
+    {
+      "parameter": "STEM Interest",
+      "score": 4
+    },
+    {
+      "parameter": "Humanities Interest",
+      "score": 9.5
+    },
+    {
+      "parameter": "Business Interest",
+      "score": 4
+    },
+    {
+      "parameter": "Design/Arts Interest",
+      "score": 8.5
+    },
+    {
+      "parameter": "Social Work Interest",
+      "score": 9.5
+    }
+  ],
+  "report": "https://res.cloudinary.com/dduagzkor/raw/upload/v1755936677/report_50c2e9683aa64abd88c5ae2f7593318d.pdf"
 }
