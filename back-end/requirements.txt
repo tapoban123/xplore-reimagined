@@ -7,3 +7,8 @@ pyjwt
 python-dotenv
 sqlmodel
 redis[hiredis]
+apscheduler
+cloudinary
+psycopg2-binary
+pypdf2
+reportlab
