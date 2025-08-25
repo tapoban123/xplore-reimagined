@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -121,7 +122,9 @@ def generate_pdf(user: Student, careers_output: CareersOutputModel) -> tuple:
     # --------- Generating new pdf ----------
     new_page1 = PdfReader(user_info.buffer)
     new_page3 = PdfReader(charts_and_careers.buffer)
-    report_pdf = PdfReader(open("static/documents/Psychometric_Test_Report.pdf", mode="rb"))
+    base_dir = os.path.dirname(__file__)
+    template_path = os.path.join(base_dir, "../", "../", "static", "documents", "Psychometric_Test_Report.pdf")
+    report_pdf = PdfReader(open(template_path, mode="rb"))
     output = PdfWriter()
 
     page1 = report_pdf.pages[0]

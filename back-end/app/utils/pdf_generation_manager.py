@@ -1,3 +1,4 @@
+import os
 from typing import Any
 
 from PyPDF2 import PdfWriter, PdfReader
@@ -15,7 +16,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, FrameBreak
 from reportlab.platypus.doctemplate import PageTemplate
 from reportlab.platypus.frames import Frame
 
-
 from ..logging import log
 
 
@@ -29,11 +29,17 @@ class PDFComponentGenerationManager:
         self._set_pdf_font()
 
     def _set_pdf_font(self):
-        pdfmetrics.registerFont(TTFont(name="InterNormal", filename=r"static/fonts/Inter/Inter_18pt-Regular.ttf"))
-        pdfmetrics.registerFont(TTFont(name="InterBold", filename=r"static/fonts/Inter/Inter_18pt-Bold.ttf"))
-        pdfmetrics.registerFont(TTFont(name="InterItalic", filename=r"static/fonts/Inter/Inter_18pt-Italic.ttf"))
-        pdfmetrics.registerFont(
-            TTFont(name="InterBoldItalic", filename="static/fonts/Inter/Inter_18pt-BoldItalic.ttf"))
+        base_dir = os.path.dirname(__file__)
+        regular_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Regular.ttf")
+        bold_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Bold.ttf")
+        italic_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Italic.ttf")
+        boldItalic_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-BoldItalic.ttf")
+        print(regular_font_path, bold_font_path, boldItalic_font_path, italic_font_path)
+
+        pdfmetrics.registerFont(TTFont(name="InterNormal", filename=regular_font_path))
+        pdfmetrics.registerFont(TTFont(name="InterBold", filename=bold_font_path))
+        pdfmetrics.registerFont(TTFont(name="InterItalic", filename=italic_font_path))
+        pdfmetrics.registerFont(TTFont(name="InterBoldItalic", filename=boldItalic_font_path))
 
         pdfmetrics.registerFontFamily(
             normal="InterNormal",
