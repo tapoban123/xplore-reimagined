@@ -11,5 +11,9 @@
       "dest": "app/main.py"
     }
   ],
-  "includeFiles": ["static/**/*"]
+  "api/**": {
+    "includeFiles": [
+      "static/**/*"
+    ]
+  }
 }
