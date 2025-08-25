@@ -1,3 +1,5 @@
+import os.path
+
 from PyPDF2 import PdfWriter, PdfReader
 import io
 import random
@@ -216,7 +218,7 @@ careers_style = ParagraphStyle(
     leading=20,
     bulletFontName="InterNormal",
     bulletFontSize=20,
-    textColor = HexColor(0x222222)
+    textColor=HexColor(0x222222)
 )
 
 careers = [f"<bullet>&bull;</bullet> <b>{x["career"]}:</b> {x["explanation"]}" for x in demo_data["careers"]]
@@ -240,13 +242,15 @@ page2.build(careers_content)
 # page2_buffer.seek(0)
 
 
-
-
-
 # ------- Preparing the output pdf ----------------
 page1_pdf = PdfReader(page1_buffer)
 page2_pdf = PdfReader(page2_buffer)
-existing_pdf = PdfReader(open("Psychometric Test Report.pdf", mode="rb"))
+
+base_dir = os.path.dirname(__file__)
+template_path = os.path.join(base_dir, "Psychometric Test Report.pdf")
+print(template_path)
+existing_pdf = PdfReader(open(template_path, mode="rb"))
+
 output = PdfWriter()
 
 page1 = existing_pdf.pages[0]

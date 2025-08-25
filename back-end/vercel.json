@@ -10,5 +10,6 @@
       "src": "/(.*)",
       "dest": "app/main.py"
     }
-  ]
+  ],
+  "includeFiles": "static/**/*"
 }

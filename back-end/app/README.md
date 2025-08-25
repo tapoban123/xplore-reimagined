@@ -18,12 +18,10 @@ The career choices to be returned must be appropriate and practical for an India
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJlMmZlMmY4ODAzYjA0NmM5YjMwMjFkMjBiNGQ5YmUxZSIsImV4cCI6MTc1ODcyNTIzMH0.0E75EIwfemhdsFYyXpX7G2LJ29iavnSRUaIFW5YjisA"
 }
 
-
 {
   "details": "success",
-  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiIxMTNlOWJhNmJkZDY0YjdhYjNhM2MyMzUwZmQ1NDQ4MiIsImV4cCI6MTc1ODczNTA1NH0.8LmQTfwG7pxbJtqTEgdEDpsYxTzcnA1fr0avhoDxjsc"
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI1YmFmZjlkNGJhMzg0ZTI4OTZjYmRlZTcwNGZkNTE1OCIsImV4cCI6MTc1ODc0MTMzOX0.vLssdx_TYjJVmJ6VTHrAN8x1REr8bcRUKLYrT2bZISM"
 }
-
 
 {
 "questions_with_answers": [
