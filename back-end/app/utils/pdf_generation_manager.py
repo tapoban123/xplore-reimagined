@@ -34,7 +34,6 @@ class PDFComponentGenerationManager:
         bold_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Bold.ttf")
         italic_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Italic.ttf")
         boldItalic_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-BoldItalic.ttf")
-        print(regular_font_path, bold_font_path, boldItalic_font_path, italic_font_path)
 
         pdfmetrics.registerFont(TTFont(name="InterNormal", filename=regular_font_path))
         pdfmetrics.registerFont(TTFont(name="InterBold", filename=bold_font_path))
