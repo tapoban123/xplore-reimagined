@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 def get_age_from_dob(now: datetime, dob: datetime) -> int:

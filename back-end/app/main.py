@@ -22,7 +22,11 @@ async def lifespan(app: FastAPI):
 
     scheduler = BackgroundScheduler()
     trigger = CronTrigger(day_of_week=6, hour=0, minute=0)
-    scheduler.add_job(revive_redis_db, trigger, name="Triggers the RedisDB to prevent it from getting deleted.")
+    scheduler.add_job(
+        revive_redis_db,
+        trigger,
+        name="Triggers the RedisDB to prevent it from getting deleted.",
+    )
     scheduler.start()
 
     create_all_tables()

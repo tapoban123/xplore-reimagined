@@ -18,11 +18,17 @@ def fetch_student_details(user: Annotated[Student, Depends(validate_token)]):
     return user
 
 
-@user_profile_router.get("/psychometrics", response_model=FetchStudentPsychometricsModel)
-def fetch_student_psychometrics(user: Annotated[Student, Depends(validate_token)], db: db_dependency):
+@user_profile_router.get(
+    "/psychometrics", response_model=FetchStudentPsychometricsModel
+)
+def fetch_student_psychometrics(
+    user: Annotated[Student, Depends(validate_token)], db: db_dependency
+):
     return fetch_user_psychometrics(user, db)
 
 
 @user_profile_router.delete("/delete")
-def delete_student(user: Annotated[Student, Depends(validate_token)], db: db_dependency):
+def delete_student(
+    user: Annotated[Student, Depends(validate_token)], db: db_dependency
+):
     return delete_user_account(user, db)

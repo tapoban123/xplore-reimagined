@@ -1,6 +1,7 @@
 from app.utils.constants import REDIS_SECRETS
 import redis
 
+
 def get_redis_config() -> redis.Redis:
     """Configure Redis for storage."""
     redis_config = redis.Redis(
@@ -11,4 +12,3 @@ def get_redis_config() -> redis.Redis:
         password=REDIS_SECRETS.REDIS_PASSWORD.value,
     )
     return redis_config
-

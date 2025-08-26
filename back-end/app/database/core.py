@@ -1,7 +1,6 @@
 from fastapi import Depends
 from sqlmodel import Session, SQLModel, create_engine
 from typing import Annotated
-from sqlalchemy import text
 
 from ..utils.constants import NEON_POSTGRES_DB
 

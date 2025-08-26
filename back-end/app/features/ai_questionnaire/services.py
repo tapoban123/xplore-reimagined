@@ -10,7 +10,7 @@ import uuid
 from reportlab.lib.colors import HexColor
 from reportlab.lib.pagesizes import A4
 from reportlab.platypus import Paragraph, Spacer, FrameBreak
-from PyPDF2 import PdfWriter, PdfReader
+from pypdf import PdfWriter, PdfReader
 from sqlmodel import select
 
 from ...entities.entities import Student, StudentPsychometrics
@@ -70,27 +70,47 @@ def generate_pdf(user: Student, careers_output: CareersOutputModel) -> tuple:
     """Generate psychometric analysis report in PDF format."""
     new_pdf_buffer = io.BytesIO()
     file_name = f"report_{user.id}.pdf"
-    document_title = "Psychometric Analysis Report"
+    # document_title = "Psychometric Analysis Report"
 
     # -------- Creating user info -----------
     user_info = PDFComponentGenerationManager()
-    user_info.create_frame(x1=50, y1=A4[1] - 430, width=500, height=120,
-                           leftPadding=30, )
+    user_info.create_frame(
+        x1=50,
+        y1=A4[1] - 430,
+        width=500,
+        height=120,
+        leftPadding=30,
+    )
     user_info_style = user_info.get_paragraph_style(leftIndent=100)
 
     user_info.content.append(Paragraph(user.name, user_info_style))
     user_info.content.append(Spacer(height=8, width=0))
-    user_info.content.append(Paragraph(str(get_age_from_dob(datetime.now(), user.date_of_birth)), user_info_style))
+    user_info.content.append(
+        Paragraph(
+            str(get_age_from_dob(datetime.now(), user.date_of_birth)), user_info_style
+        )
+    )
     user_info.content.append(Spacer(height=8, width=0))
     user_info.content.append(Paragraph(user.institution, user_info_style))
     user_info.prepare_pdf()
 
     # -------- Creating psychometric chart & careers -----------
     charts_and_careers = PDFComponentGenerationManager()
-    charts_and_careers.create_frame(x1=0, y1=385, width=A4[0], height=A4[1] - (A4[1] / 2),
-                                    leftPadding=140, )
-    charts_and_careers.create_frame(x1=0, y1=0, width=A4[0], height=330,
-                                    leftPadding=60, rightPadding=20, )
+    charts_and_careers.create_frame(
+        x1=0,
+        y1=385,
+        width=A4[0],
+        height=A4[1] - (A4[1] / 2),
+        leftPadding=140,
+    )
+    charts_and_careers.create_frame(
+        x1=0,
+        y1=0,
+        width=A4[0],
+        height=330,
+        leftPadding=60,
+        rightPadding=20,
+    )
     psychometrics_chart = charts_and_careers.create_horizontal_bar_chart(
         psychometrics_len=len(careers_output.psychometrics),
         category_names=[x.parameter for x in careers_output.psychometrics],
@@ -102,16 +122,18 @@ def generate_pdf(user: Student, careers_output: CareersOutputModel) -> tuple:
         lables_dx=-10,
     )
     charts_and_careers_style = charts_and_careers.get_paragraph_style(
-        fontSize=16,
-        leading=20,
-        bulletFontSize=20,
-        textColor=HexColor(0x222222)
+        fontSize=16, leading=20, bulletFontSize=20, textColor=HexColor(0x222222)
     )
-    careers = [f"<bullet>&bull;</bullet> <b>{x.career}:</b> {x.explanation}" for x in careers_output.careers]
+    careers = [
+        f"<bullet>&bull;</bullet> <b>{x.career}:</b> {x.explanation}"
+        for x in careers_output.careers
+    ]
     charts_and_careers.content.extend([psychometrics_chart, FrameBreak()])
 
     for i in range(len(careers)):
-        charts_and_careers.content.append(Paragraph(careers[i], charts_and_careers_style))
+        charts_and_careers.content.append(
+            Paragraph(careers[i], charts_and_careers_style)
+        )
 
         if i != len(careers) - 1:
             spacer = charts_and_careers.create_spacer()
@@ -122,8 +144,11 @@ def generate_pdf(user: Student, careers_output: CareersOutputModel) -> tuple:
     # --------- Generating new pdf ----------
     new_page1 = PdfReader(user_info.buffer)
     new_page3 = PdfReader(charts_and_careers.buffer)
+
     base_dir = os.path.dirname(__file__)
-    template_path = os.path.join(base_dir, "../", "../", "static", "documents", "Psychometric_Test_Report.pdf")
+    template_path = os.path.join(
+        base_dir, "../", "../", "static", "documents", "Psychometric_Test_Report.pdf"
+    )
     report_pdf = PdfReader(open(template_path, mode="rb"))
     output = PdfWriter()
 
@@ -142,9 +167,16 @@ def generate_pdf(user: Student, careers_output: CareersOutputModel) -> tuple:
     return (file_name, new_pdf_buffer.getvalue())
 
 
-def store_psychometrics_to_db(db: db_dependency, careers_output: CareersOutputModel, report_url: str, student_id: str):
+def store_psychometrics_to_db(
+    db: db_dependency,
+    careers_output: CareersOutputModel,
+    report_url: str,
+    student_id: str,
+):
     """Store the psychometric scores of the student to database along with the generated report url."""
-    query = select(StudentPsychometrics).where(StudentPsychometrics.student_id == student_id)
+    query = select(StudentPsychometrics).where(
+        StudentPsychometrics.student_id == student_id
+    )
     user = db.exec(query).first()
 
     psychometrics = {x.parameter: x.score for x in careers_output.psychometrics}
@@ -171,7 +203,7 @@ def store_psychometrics_to_db(db: db_dependency, careers_output: CareersOutputMo
             Humanities_Interest=psychometrics["Humanities Interest"],
             Business_Interest=psychometrics["Business Interest"],
             Design_or_Arts=psychometrics["Design/Arts Interest"],
-            Social_Work_Interest=psychometrics["Social Work Interest"]
+            Social_Work_Interest=psychometrics["Social Work Interest"],
         )
         db.add(metrics)
         db.commit()

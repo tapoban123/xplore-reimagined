@@ -12,7 +12,9 @@ class Student(SQLModel, table=True):
     date_of_birth: datetime = Field(default=None)
     institution: str = Field(default=None)
 
-    psychometrics: list["StudentPsychometrics"] | None = Relationship(back_populates="student", cascade_delete=True)
+    psychometrics: list["StudentPsychometrics"] | None = Relationship(
+        back_populates="student", cascade_delete=True
+    )
 
 
 class StudentPsychometrics(SQLModel, table=True):

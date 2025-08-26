@@ -1,7 +1,6 @@
 import cloudinary
 from ..utils.constants import CLOUDINARY_SECRETS
 import cloudinary.uploader
-from cloudinary.utils import cloudinary_url
 
 
 def set_cloudinary_config() -> None:
@@ -10,7 +9,7 @@ def set_cloudinary_config() -> None:
         cloud_name=CLOUDINARY_SECRETS.CLOUD_NAME.value,
         api_key=CLOUDINARY_SECRETS.API_KEY.value,
         api_secret=CLOUDINARY_SECRETS.API_SECRET.value,
-        secure=True
+        secure=True,
     )
 
     # # Upload an image

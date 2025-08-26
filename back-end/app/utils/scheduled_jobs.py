@@ -1,6 +1,6 @@
 from app.database.redis_config import get_redis_config
 from datetime import timedelta
-import rich
+
 
 def revive_redis_db() -> None:
     """
@@ -10,4 +10,3 @@ def revive_redis_db() -> None:
 
     redis = get_redis_config()
     redis.setex(name="Sample Data", value="Sample Value", time=timedelta(minutes=1))
-

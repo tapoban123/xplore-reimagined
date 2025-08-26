@@ -12,7 +12,7 @@ from pydantic import BaseModel
 from sqlalchemy.exc import NoResultFound
 
 from app.database.redis_config import get_redis_config
-from app.utils.constants import JWT_SECRETS, OTP_TYPE, REDIS_SECRETS
+from app.utils.constants import JWT_SECRETS, OTP_TYPE
 from app.database.core import db_dependency
 from app.entities.entities import Student
 from app.exceptions import (
@@ -45,7 +45,14 @@ def user_exists(email: str, db: db_dependency) -> Student | None:
     return user.first()
 
 
-def create_new_student(name: str, email: str, password: str, institution: str, dob: datetime, db: db_dependency):
+def create_new_student(
+    name: str,
+    email: str,
+    password: str,
+    institution: str,
+    dob: datetime,
+    db: db_dependency,
+):
     """Sign up new student to our platform."""
     if user_exists(email, db):
         raise UserAlreadyExistsException()
@@ -53,7 +60,9 @@ def create_new_student(name: str, email: str, password: str, institution: str, d
     uid = uuid.uuid4().hex
 
     new_user = Student(
-        id=uid, name=name, email=email,
+        id=uid,
+        name=name,
+        email=email,
         password=bcrypt_context.hash(password),
         institution=institution,
         date_of_birth=dob.replace(tzinfo=timezone.utc),
@@ -92,7 +101,9 @@ def generate_otp() -> OTP_MODEL:
 def send_otp(otp_type: OTP_TYPE, receiver_email: str):
     """Generate an OTP and send that to the user."""
     otp: OTP_MODEL = generate_otp()
-    craft_and_send_OTP_mail(otp_type=otp_type, otp=otp.otp, receiver_email=receiver_email)
+    craft_and_send_OTP_mail(
+        otp_type=otp_type, otp=otp.otp, receiver_email=receiver_email
+    )
     return {"otp_key": otp.otp_key}
 
 

@@ -10,5 +10,5 @@ redis[hiredis]
 apscheduler
 cloudinary
 psycopg2-binary
-pypdf2
+pypdf
 reportlab
