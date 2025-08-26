@@ -8,12 +8,14 @@ from sqlmodel import select
 
 
 def fetch_user_psychometrics(user: Student, db: db_dependency):
+    """Fetch values of all psychometric parameters of the user."""
     query = select(StudentPsychometrics).where(StudentPsychometrics.student_id == user.id)
     result = db.exec(query).one()
     return result
 
 
 def delete_user_account(user: Student, db: db_dependency):
+    """Delete the account of the student."""
     query = select(Student).where(Student.id == user.id)
     result =  db.exec(query).one()
 

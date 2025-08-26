@@ -20,6 +20,7 @@ from ..logging import log
 
 
 class PDFComponentGenerationManager:
+    """Provide fields and methods to generate the psychometric report pdf."""
     def __init__(self):
         self.buffer = io.BytesIO()
         self.template = SimpleDocTemplate(self.buffer)
@@ -29,6 +30,7 @@ class PDFComponentGenerationManager:
         self._set_pdf_font()
 
     def _set_pdf_font(self):
+        """Run in constructor to initialise reportlab pdfmetrics with custom font family and its values."""
         base_dir = os.path.dirname(__file__)
         regular_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Regular.ttf")
         bold_font_path = os.path.join(base_dir, "../", "static", "fonts", "Inter", "Inter_18pt-Bold.ttf")

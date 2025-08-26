@@ -23,7 +23,7 @@ from app.exceptions import (
     OTPAlreadyExpiredException,
     InvalidAccessTokenException,
 )
-from app.utils.send_email import send_mail
+from app.utils.send_email import craft_and_send_OTP_mail
 
 JWT_SECRET_KEY = JWT_SECRETS.JWT_SECRET_KEY
 JWT_ALGORITHM = "HS256"
@@ -92,7 +92,7 @@ def generate_otp() -> OTP_MODEL:
 def send_otp(otp_type: OTP_TYPE, receiver_email: str):
     """Generate an OTP and send that to the user."""
     otp: OTP_MODEL = generate_otp()
-    send_mail(otp_type=otp_type, otp=otp.otp, receiver_email=receiver_email)
+    craft_and_send_OTP_mail(otp_type=otp_type, otp=otp.otp, receiver_email=receiver_email)
     return {"otp_key": otp.otp_key}
 
 
