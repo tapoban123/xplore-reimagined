@@ -1,0 +1,13 @@
+.venv/
+
+# secrets
+.env
+
+
+# cache
+.idea/
+__pycache__/
+.vscode/
+
+# test database
+xplore.db

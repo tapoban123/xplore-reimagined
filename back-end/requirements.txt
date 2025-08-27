@@ -1,0 +1,14 @@
+fastapi[standard]
+langchain
+langchain-core
+langchain-google-genai
+passlib[bcrypt]
+pyjwt
+python-dotenv
+sqlmodel
+redis[hiredis]
+apscheduler
+cloudinary
+psycopg2-binary
+pypdf
+reportlab
